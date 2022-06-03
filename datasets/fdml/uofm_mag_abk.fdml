@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset id="uofm_mag_abk"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://latis-data.io/schemas/1.0/fdml-with-columnar-adapter.xsd">
+
+  <source uri="file:///data/Halloween_UofM/Event01/ABK.txt"/>
+
+  <!--
+# SWMF run: SWMF_SWPC
+# created at 2022-02-18T11:22:05.659256
+# North, East and vertical components of magnetic field in nT
+# computed from magnetosphere and ionosphere currents
+# Station: ABK
+Year Month Day Hour Min Sec B_NorthGeomag B_EastGeomag B_DownGeomag
+2003   10   29    0   35   33      -56.751      -38.353      -20.079
+2003   10   29    0   36   33      -45.914      -42.721      -34.763
+...
+  -->
+
+  <adapter class="latis.input.ColumnarAdapter"
+           columns="0,1,2,3,4,5;6;7;8"
+           skipLines="6"
+           delimiter="\s+"/>
+
+  <function>
+    <scalar id="time"
+            type="string"
+            units="y M d H m s"
+            class="latis.time.Time"/>
+
+    <tuple>
+      <scalar id="Bn"
+              title="North components of magnetic field"
+              type="float"
+              units="nT"/>
+      <scalar id="Be"
+              title="East components of magnetic field"
+              type="float"
+              units="nT"/>
+      <scalar id="Bd"
+              title="Vertical components of magnetic field"
+              type="float"
+              units="nT"/>
+    </tuple>
+  </function>
+
+</dataset>
+

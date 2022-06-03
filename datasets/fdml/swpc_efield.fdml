@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset id="swpc_efield"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://latis-data.io/schemas/1.0/fdml-with-netcdf-adapter.xsd">
+
+  <source uri="file:///data/SWPC_Efield/20031029-empirical-EMTF-2020.06.nc"/>
+
+  <adapter class="latis.input.NetcdfAdapter" />
+
+  <function>
+    <tuple>
+      <scalar id="time"
+              units="seconds since 2003-10-29"
+              type="double"
+              class="latis.time.Time"/>
+      <scalar id="latitude"
+              units="degrees"
+              type="float"/>
+      <scalar id="longitude"
+              units="degrees"
+              type="float"/>
+    </tuple>
+    <tuple>
+      <scalar id="Ex" type="float" units="mV/km" missingValue="999999"/>
+      <scalar id="Ey" type="float" units="mV/km" missingValue="999999"/>
+    </tuple>
+  </function>
+
+</dataset>
+
+  <!--
+netcdf /Users/lindholm/data/chess/swpc-efield/20031029-empirical-EMTF-2020.06.nc {
+  dimensions:
+    time = UNLIMITED;   // (1441 currently)
+    longitude = 116;
+    latitude = 49;
+    stationlist = 401;
+  variables:
+    double time(time=1441);
+      :TITLE = "time";
+      :UNITS = "seconds since 2003-10-29T00:00:00.000";
+      :REFTIME = "2003-10-29T00:00:00.000";
+
+    int nobs(time=1441);
+      :TITLE = "number of input observatories";
+      :UNITS = " ";
+
+    double emax(time=1441);
+      :TITLE = "Maximum E-field";
+      :UNITS = "mV/km";
+
+    char obslist(time=1441, latitude=49);
+      :TITLE = "list of input observatories";
+      :UNITS = " ";
+
+    float longitude(longitude=116);
+      :TITLE = "longitude";
+      :UNITS = "degrees";
+
+    float latitude(latitude=49);
+      :TITLE = "latitude";
+      :UNITS = "degrees";
+
+    float distance(latitude=49, longitude=116);
+      :TITLE = "Distance to nearest observatory";
+      :UNITS = "km";
+
+    float Ex(time=1441, latitude=49, longitude=116);
+      :TITLE = "Ex (north component E-field)";
+      :UNITS = "mV/km";
+      :_FillValue = 999999.0f; // float
+
+    float Ey(time=1441, latitude=49, longitude=116);
+      :TITLE = "Ey (east component E-field)";
+      :UNITS = "mV/km";
+      :_FillValue = 999999.0f; // float
+
+    float Quality(time=1441, latitude=49, longitude=116);
+      :TITLE = "Quality Indicator";
+      :UNITS = " ";
+
+  // global attributes:
+  :FILENAME = "20031029-empirical-EMTF-2020.06.nc";
+  :MODEL_TYPE = "empirical-EMTF";
+  :MODEL_VERSION = "2020.06";
+  :CADENCE = "60 seconds";
+  :NGRIDPTS = "5684";
+  :NLON = "116";
+  :NLAT = "49";
+}
+  -->
