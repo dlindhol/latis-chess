@@ -1,7 +1,7 @@
 ThisBuild / organization := "lasp"
 ThisBuild / scalaVersion := "2.13.8"
 
-val latisVersion = "a6d6504"
+val latisVersion = "63ab06d"
 
 lazy val commonSettings = Seq(
   libraryDependencies ++= Seq(
